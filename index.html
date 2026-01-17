@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>KaiAuth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="header">KaiAuth</div>
+
+  <div id="view-pin" class="view">
+    <div class="pin-instruction">请输入PIN码</div>
+    <div class="pin-dots-container">
+      <div class="dot" id="dot-0"></div>
+      <div class="dot" id="dot-1"></div>
+      <div class="dot" id="dot-2"></div>
+      <div class="dot" id="dot-3"></div>
+    </div>
+  </div>
+
+  <div id="view-list" class="view active">
+    <div class="token-list" id="token-list">
+    </div>
+  </div>
+
+  <div class="softkeys">
+    <div id="softkey-left" class="sk-btn">添加</div>
+    <div id="softkey-center" class="sk-btn"></div>
+    <div id="softkey-right" class="sk-btn">选项</div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>

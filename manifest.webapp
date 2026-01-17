@@ -1,0 +1,43 @@
+{
+  "name": "KaiAuth",
+  "description": "基于离线的安全双重认证工具",
+  "version": "1.0.0",
+  "launch_path": "/index.html",
+  "type": "privileged",
+  "origin": "app://kaiauth.dongfg.com",
+  "icons": {
+    "56": "/icons/icon56.png",
+    "112": "/icons/icon112.png"
+  },
+  "developer": {
+    "name": "dongfg",
+    "url": "https://github.com/dongfg/KaiAuth"
+  },
+  "locales": {
+    "zh-CN": {
+      "name": "KaiAuth",
+      "subtitle": "双重身份验证器",
+      "description": "为您的账户提供二次验证保护"
+    }
+  },
+  "default_locale": "zh-CN",
+  "permissions": {
+    "video-capture": {
+      "description": "用于扫描二维码以添加账户"
+    },
+    "camera": {
+      "description": "调用摄像头权限"
+    },
+    "audio-capture": {
+        "description": "某些扫描库可能需要声明"
+    },
+    "storage": {
+      "description": "本地存储密钥数据"
+    },
+    "systemXHR": {
+      "description": "如果未来需要从网络同步时间或备份"
+    }
+  },
+  "fullscreen": "true",
+  "cursor": "false"
+}
