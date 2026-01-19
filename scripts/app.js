@@ -9,7 +9,7 @@ const tokens = [
 ];
 
 // 初始化
-function init() {  
+function init() {
   loadAppData((appData) => {
     loadPinStatus(appData);
     switch (state.view) {
@@ -123,7 +123,14 @@ function handleListNav(e) {
       renderList();
     }
   } else if (e.key === 'SoftLeft' || e.key === 'q') {
-    alert("点击了添加");
+    const qrCode = new QRCode();
+    try {
+      qrCode.readAsText().then(res => {
+        console.log("qrCode", res);
+      }).catch(console.error)
+    } catch (err) {
+      console.log(err);
+    }
   } else if (e.key === 'SoftRight' || e.key === 'e') {
     menu.open();
   }

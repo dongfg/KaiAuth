@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "launch_path": "/index.html",
   "type": "privileged",
-  "origin": "app://kaiauth.dongfg.com",
   "icons": {
     "56": "/icons/icon56.png",
     "112": "/icons/icon112.png"
