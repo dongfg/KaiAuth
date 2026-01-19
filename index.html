@@ -5,15 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <title>KaiAuth</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/styles/app.css">
+  <link rel="stylesheet" href="/styles/menu.css">
 </head>
 
 <body>
 
   <div class="header">KaiAuth</div>
 
-  <div id="view-pin" class="view">
-    <div class="pin-instruction">请输入PIN码</div>
+  <div id="view-pin" class="view active">
+    <div id="pin-prompt" class="pin-prompt">请输入PIN码</div>
     <div class="pin-dots-container">
       <div class="dot" id="dot-0"></div>
       <div class="dot" id="dot-1"></div>
@@ -22,17 +23,29 @@
     </div>
   </div>
 
-  <div id="view-list" class="view active">
+  <div id="view-list" class="view">
     <div class="token-list" id="token-list">
     </div>
   </div>
 
-  <div class="softkeys">
+  <div id="softkeys" class="softkeys hidden">
     <div id="softkey-left" class="sk-btn">添加</div>
     <div id="softkey-center" class="sk-btn"></div>
     <div id="softkey-right" class="sk-btn">选项</div>
   </div>
-  <script src="app.js"></script>
+  <div id="option-menu" class="menu-overlay hidden">
+    <div class="menu-container">
+      <div class="menu-list">
+      </div>
+    </div>
+  </div>
+  <script src="/scripts/lib/softkeys.js"></script>
+  <script src="/scripts/lib/option-menu.js"></script>  
+  <script src="/scripts/data.js"></script>
+  <script src="/scripts/state.js"></script>  
+  <script src="/scripts/pin.js"></script>
+  <script src="/scripts/menu.js"></script>
+  <script src="/scripts/app.js"></script>
 </body>
 
 </html>

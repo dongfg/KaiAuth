@@ -1,9 +1,6 @@
-let state = {
-  view: 'list',
-  pinInput: '',
-  navIndex: 0,
-  timerInterval: null
-};
+// dependency: state.js, data.js, pin.js, menu.js
+
+const state = window.AppState;
 
 // TODO 数据存储
 const tokens = [
@@ -11,22 +8,17 @@ const tokens = [
   { issuer: "GitHub", user: "" }
 ];
 
-// PIN 码的小圆点
-const elPinDots = [0, 1, 2, 3].map(i => document.getElementById(`dot-${i}`));
-
 // 初始化
 function init() {
-  console.log("App Started");
+  console.log("App Started", loadPinStatus());
   switch (state.view) {
     case 'pin':
-      renderPinDots();
       break;
     case 'list':
       renderList();
       break;
   }
   startGlobalTimer();
-  updateSoftkeys();
   // 监听全剧键盘事件
   document.addEventListener('keydown', handleKeydown);
 }
@@ -70,16 +62,6 @@ function startGlobalTimer() {
   }, 1000);
 }
 
-// 渲染 PIN 码的小圆点
-function renderPinDots() {
-  elPinDots.forEach((dot, index) => {
-    if (index < state.pinInput.length) {
-      dot.classList.add('filled');
-    } else {
-      dot.classList.remove('filled');
-    }
-  });
-}
 
 // === 核心：渲染列表与 SVG ===
 function renderList() {
@@ -94,7 +76,7 @@ function renderList() {
     div.innerHTML = `
       <div class="token-info">
         <div class="token-issuer">${token.issuer}</div>
-        ${token.user?'<div class="token-user">'+token.user+'</div>':''}
+        ${token.user ? '<div class="token-user">' + token.user + '</div>' : ''}
         <div class="token-code">${code}</div>
       </div>
       <div class="token-timer-numeric">30</div>
@@ -107,65 +89,22 @@ function renderList() {
   updateUIImmediately();
 }
 
-
-// PIN 界面不需要软键
-function updateSoftkeys() {
-  const left = document.getElementById('softkey-left');
-  const right = document.getElementById('softkey-right');
-
-  if (state.view === 'pin') {
-    left.innerText = '';
-    right.innerText = '';
-  } else {
-    left.innerText = '添加';
-    right.innerText = '选项';
-  }
-}
-
 // 键盘处理中心
 function handleKeydown(e) {
-  e.preventDefault();
   switch (state.view) {
     case 'pin':
-      handlePinInput(e);
+      handlePinInput(e, () => {
+        renderList();
+      });
       break;
     case 'list':
+      if (menu.isVisible) {
+        menu.handleKey(e.key);
+        e.preventDefault();
+        return;
+      }
       handleListNav(e);
       break;
-  }
-}
-
-// 处理 PIN 输入
-function handlePinInput(e) {
-  // 删除
-  if (e.key === 'Backspace' || e.key === 'Clear') {
-    if (state.pinInput.length > 0) {
-      e.preventDefault(); // 拦截系统返回，防止应用直接关闭
-      state.pinInput = state.pinInput.slice(0, -1);
-      renderPinDots();
-    }
-    else {
-      window.close();
-    }
-    return;
-  }
-  // 数字键 0-9
-  if (e.key >= '0' && e.key <= '9') {
-    if (state.pinInput.length < 4) {
-      state.pinInput += e.key;
-      renderPinDots();
-
-      // TODO 模拟输入完成
-      if (state.pinInput.length === 4) {
-        setTimeout(() => {
-          // 切换到列表视图
-          state.view = 'list';
-          document.getElementById('view-pin').classList.remove('active');
-          document.getElementById('view-list').classList.add('active');
-          updateSoftkeys();
-        }, 300);
-      }
-    }
   }
 }
 
@@ -181,10 +120,10 @@ function handleListNav(e) {
       state.navIndex--;
       renderList();
     }
-  } else if (e.key === 'SoftLeft') {
+  } else if (e.key === 'SoftLeft' || e.key === 'q') {
     alert("点击了添加");
-  } else if (e.key === 'SoftRight') {
-    alert("点击了选项");
+  } else if (e.key === 'SoftRight' || e.key === 'e') {
+    menu.open();
   }
 }
 

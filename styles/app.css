@@ -55,7 +55,7 @@ body {
   /* 稍微向上偏移 */
 }
 
-.pin-instruction {
+.pin-prompt {
   color: #6a0080;
   font-size: 18px;
   margin-bottom: 20px;
@@ -209,6 +209,10 @@ body {
   padding: 0 5px;
   font-size: 14px;
   color: #333;
+}
+
+.softkeys .hidden {
+  visibility: hidden;
 }
 
 .sk-btn {
