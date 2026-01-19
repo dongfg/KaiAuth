@@ -21,21 +21,15 @@
     }
   },
   "default_locale": "zh-CN",
+  "categories": [
+    "utilities"
+  ],
   "permissions": {
     "video-capture": {
       "description": "用于扫描二维码以添加账户"
     },
     "camera": {
       "description": "调用摄像头权限"
-    },
-    "audio-capture": {
-        "description": "某些扫描库可能需要声明"
-    },
-    "storage": {
-      "description": "本地存储密钥数据"
-    },
-    "systemXHR": {
-      "description": "如果未来需要从网络同步时间或备份"
     }
   },
   "fullscreen": "true",

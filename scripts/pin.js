@@ -1,12 +1,10 @@
-function loadPinStatus() {
+function loadPinStatus(appData) {
   const state = window.AppState;
-  console.log("window.AppData.pin", window.AppData.pin);
-  if (window.AppData.pin && window.AppData.pin.length) {
+  if (appData.pin && appData.pin.length) {
     state.pinStatus = 'input';
   } else {
     state.pinStatus = 'set1';
   }
-  return state.pinStatus;
 }
 
 let pinSet1 = ''

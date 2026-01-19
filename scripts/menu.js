@@ -8,19 +8,17 @@ const menu = new OptionMenu({
     { label: '锁定', key: 'lock' },
     { label: '退出应用', key: 'quit' }
   ],
-  // 当菜单打开时，隐藏软键
   onOpen: () => {
-    hideSoftkeys();
   },
-  // 当菜单关闭时，恢复软键
   onClose: () => {
-    showSoftkeys();
   },
   // 当选中某一项时
   onSelect: (key) => {
-    console.log('菜单选中了:', key);
     if (key === 'delete') {
-      alert('执行删除操作');
+      if (confirm("确定要删除这个账户吗？")) {
+        console.log("delete", window.AppState.navIndex);
+      } else {
+      }
     } else if (key === 'lock') {
       window.AppState.view = 'pin';
     } else if (key === 'quit') {

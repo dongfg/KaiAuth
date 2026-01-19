@@ -9,18 +9,20 @@ const tokens = [
 ];
 
 // 初始化
-function init() {
-  console.log("App Started", loadPinStatus());
-  switch (state.view) {
-    case 'pin':
-      break;
-    case 'list':
-      renderList();
-      break;
-  }
-  startGlobalTimer();
-  // 监听全剧键盘事件
-  document.addEventListener('keydown', handleKeydown);
+function init() {  
+  loadAppData((appData) => {
+    loadPinStatus(appData);
+    switch (state.view) {
+      case 'pin':
+        break;
+      case 'list':
+        renderList();
+        break;
+    }
+    startGlobalTimer();
+    // 监听全剧键盘事件
+    document.addEventListener('keydown', handleKeydown);
+  })
 }
 
 // 提取核心更新逻辑
