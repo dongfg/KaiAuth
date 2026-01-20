@@ -1,0 +1,18 @@
+<button id="install">点击安装我的 KaiAuth 应用</button>
+
+<script>
+  document.getElementById('install').onclick = function() {
+    // 指向你服务器上的 manifest 路径
+    var manifestURL = 'https://dongfg.github.io/KaiAuth/manifest.webapp'; 
+    
+    // 调用系统 API
+    var request = window.navigator.mozApps.install(manifestURL);
+    
+    request.onsuccess = function() {
+      alert("安装成功！请返回桌面查看。");
+    };
+    request.onerror = function() {
+      alert("安装失败: " + this.error.name);
+    };
+  };
+</script>

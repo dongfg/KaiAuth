@@ -33,5 +33,6 @@
     }
   },
   "fullscreen": "true",
-  "cursor": "false"
+  "cursor": "false",
+  "package_path": "https://dongfg.github.io/KaiAuth/kai-auth-1.0.0.zip"
 }
