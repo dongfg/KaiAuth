@@ -6,8 +6,8 @@
   "type": "privileged",
   "origin": "app://kaiauth.dongfg.com",  
   "icons": {
-    "56": "/icons/icon56.png",
-    "112": "/icons/icon112.png"
+    "56": "/icons/ic_Appname_56.png",
+    "112": "/icons/ic_Appname_112.png"
   },
   "developer": {
     "name": "dongfg",
