@@ -227,3 +227,42 @@ body {
 #softkey-right {
   text-align: right;
 }
+
+.empty-container {
+  position: relative;
+  height: calc(100vh - 60px); /* 减去 Header 和 Footer 高度 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666;
+  padding: 0 20px;
+}
+
+.instruction { font-size: 14px; color: #888; }
+
+/* 底部引导通用容器 */
+.footer-guide {
+  position: absolute;
+  bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #6a0080; /* 主题紫色 */
+}
+
+.guide-left { left: 10px; }
+.guide-right { right: 10px; }
+
+/* 调整箭头大小与粗细 */
+.arrow-char {
+  font-size: 28px;   /* 足够大，方便引导 */
+  font-weight: bold;
+  line-height: 1;
+  margin-top: -5px;  /* 微调间距 */
+}
+
+.guide-text {
+  font-size: 13px;
+  font-weight: 600;
+}

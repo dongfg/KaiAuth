@@ -24,6 +24,7 @@ const AppState = new Proxy({
   pinStatus: 'input', // input(输入解锁), set1(初始化第一次输入), set2(初始化第二次输入)
   pinInput: '',
   navIndex: 0,
+  tokens: [], // { secret, issuer, account, digits, period }
   timerInterval: null
 }, {
   set(target, key, value) {
@@ -41,7 +42,6 @@ const AppState = new Proxy({
           target.pinInput = '';
           renderPinDots(0);
           hideSoftkeys();
-          console.log("state changed hideSoftkeys", softkeysEl.classList);
         }
         break;
       }
@@ -59,6 +59,11 @@ const AppState = new Proxy({
       }
       case "pinInput": {
         renderPinDots(value.length)
+        break;
+      }
+      case "tokens": {
+        // 数据持久化
+        window.AppData.tokens = value;
         break;
       }
     }

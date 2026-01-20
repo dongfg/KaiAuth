@@ -15,9 +15,14 @@ const menu = new OptionMenu({
   // 当选中某一项时
   onSelect: (key) => {
     if (key === 'delete') {
+      if (window.AppState.tokens.length === 0) {
+        return;
+      }
       if (confirm("确定要删除这个账户吗？")) {
-        console.log("delete", window.AppState.navIndex);
-      } else {
+        window.AppState.tokens = window.AppState.tokens.filter(function (t, idx) {
+          return idx != window.AppState.navIndex;
+        });
+        renderList();        
       }
     } else if (key === 'lock') {
       window.AppState.view = 'pin';
