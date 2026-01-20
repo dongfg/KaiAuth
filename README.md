@@ -2,6 +2,11 @@ KaiAuth
 ---
 > TOTP App For KaiOS
 
+## 安装
+```
+https://dongfg.github.io/KaiAuth/install.html
+```
+
 ## 使用
 手动允许相机权限, 默认的 Prompt 授权有问题
 
